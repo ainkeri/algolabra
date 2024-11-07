@@ -15,7 +15,14 @@ Oikein kirjoitetut sanat on ohjelmassa talletettu trie-tietorakenteeseen. Trie-t
 
 Harjoitustyön ytimenä on mainitsemani trie-tietorakenne ja Damerau-Levenshtein etäisyysalgoritmi.
 
+### Sanasto
+
+Käytän ohjelmassani nykysuomen sanalistaa, joka sisältää yli 100 000 suomen kielen sanaa. Sanalistan olen ladannut Kotus.fi -sivustolta, [tästä linkistä ](https://kaino.kotus.fi/lataa/nykysuomensanalista2024.csv)(lataa sanalistan). Sanalista ei ole tyhjentävä tai normatiivinen luettelo suomen kielen sanoista. Sen on tarkoitus muun muassa toimia apuvälineenä suomen kieltä käsittelevien tietokoneohjelmien ja suomenkielisten käyttöliittymien kehitystyössä.
+
 ### Viitteet:
 
-[Scaler | Trie Data Structure](https://www.scaler.in/trie-data-structure/)
-[Wikipedia | Damerau-Levenshtein distance](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance)
+- [Scaler | Trie Data Structure](https://www.scaler.in/trie-data-structure/)
+
+- [Wikipedia | Damerau-Levenshtein distance](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance)
+
+- [Kotus | Nykysuomen sanalista 2024](https://www.kotus.fi/aineistot/sana-aineistot/nykysuomen_sanalista)
