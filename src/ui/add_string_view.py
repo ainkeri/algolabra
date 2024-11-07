@@ -1,12 +1,15 @@
 from tkinter import ttk, constants
-from services.string_service import string_service
+import tkinter as tk
+import customtkinter
 
 class AddStringView:
-    def __init__(self, root, handle_home):
+    def __init__(self, root, handle_home, string_service):
         self._root = root
         self._handle_home = handle_home
+        self._string_service = string_service
         self._frame = None
         self._create_string_entry = None
+        self._input_string = ""
 
         self._initialize()
     
@@ -20,12 +23,22 @@ class AddStringView:
         string = self._create_string_entry.get()
 
         if string:
-            string_service.create_string(string)
-    
-    def _initialize_footer(self):
-        self._create_string_entry = ttk.Entry(master=self._frame)
+            if self._string_service.search_word_from_trie(string):
+                self._input_string = customtkinter.CTkLabel(master=self._frame, text=f"Word '{string}' is already in trie.")
+                self._input_string.grid(row=3, column=0)
+                self._input_string.after(3000, lambda:  self._input_string.configure(text=""))
+            else:
+                self._string_service.create_string(string)
+                self._input_string = customtkinter.CTkLabel(master=self._frame, text=f"Word '{string}' added in trie.")
+                self._input_string.grid(row=3, column=0)
+                self._input_string.after(3000, lambda:  self._input_string.configure(text=""))
 
-        create_string_button = ttk.Button(
+        self._create_string_entry.delete(0, tk.END)
+
+    def _initialize_footer(self):
+        self._create_string_entry = customtkinter.CTkEntry(master=self._frame)
+
+        create_string_button = customtkinter.CTkButton(
             master=self._frame,
             text="Add",
             command=self._handle_create_string
@@ -48,16 +61,16 @@ class AddStringView:
         )
 
     def _initialize(self):
-        self._frame = ttk.Frame(master=self._root)
-        label = ttk.Label(master=self._frame, text="Add string")
+        self._frame = customtkinter.CTkFrame(master=self._root)
+        label = customtkinter.CTkLabel(master=self._frame, text="Add word:")
 
         self._initialize_footer()
 
-        button = ttk.Button(
+        button = customtkinter.CTkButton(
             master=self._frame,
             text="Back",
             command=self._handle_home
         )
 
-        label.grid(row=0, column=0)
-        button.grid(row=1, column=0)
+        label.grid(row=1, column=0)
+        button.grid(row=0, column=0, padx=20, pady=(10, 20), sticky="ew")
