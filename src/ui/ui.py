@@ -3,9 +3,10 @@ from ui.add_string_view import AddStringView
 from ui.search_string_view import SearchStringView
 
 class UI:
-    def __init__(self, root):
+    def __init__(self, root, string_service):
         self._root = root
         self._current_view = None
+        self._string_service = string_service
     
     def start(self):
         self._show_home_view()
@@ -41,7 +42,8 @@ class UI:
 
         self._current_view = AddStringView(
             self._root,
-            self._handle_home
+            self._handle_home,
+            self._string_service
         )
 
         self._current_view.pack()
@@ -51,7 +53,8 @@ class UI:
 
         self._current_view = SearchStringView(
             self._root,
-            self._handle_home
+            self._handle_home,
+            self._string_service
         )
 
         self._current_view.pack()
