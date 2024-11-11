@@ -28,10 +28,19 @@ class TestTrie(unittest.TestCase):
         self.trie.add_word("metsänparannus")
         self.trie.add_word("normaalinäköinen")
 
+        self.trie.get_all_words()
+
         self.assertEqual(self.trie.__str__(), "metsänomistaja, metsänomistus, metsänparannus, musiikkinäytelmä, musiikkiopinnot, musiikkiopisto, normaaliolot, normaaliobjektiivi, normaalipaino, normaalinäköinen")
-        
-        
-        
+    
+    def test_get_all_words(self):
+        self.trie.add_word("miuku")
+        self.trie.add_word("mauku")
+
+        all_words = self.trie.get_all_words()
+
+        self.assertEqual(all_words, ["miuku", "mauku"])
+    
+    
 
         
 
