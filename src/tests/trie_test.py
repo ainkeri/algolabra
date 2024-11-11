@@ -15,3 +15,24 @@ class TestTrie(unittest.TestCase):
         word = "notintrie"
 
         self.assertEqual(self.trie.search_word(word), False)
+    
+    def test_str_is_returned_correctly_with_dfs(self):
+        self.trie.add_word("metsänomistaja")
+        self.trie.add_word("normaaliolot")
+        self.trie.add_word("musiikkinäytelmä")
+        self.trie.add_word("musiikkiopinnot")
+        self.trie.add_word("normaalipaino")
+        self.trie.add_word("metsänomistus")
+        self.trie.add_word("normaaliobjektiivi")
+        self.trie.add_word("musiikkiopisto")
+        self.trie.add_word("metsänparannus")
+        self.trie.add_word("normaalinäköinen")
+
+        self.assertEqual(self.trie.__str__(), "metsänomistaja, metsänomistus, metsänparannus, musiikkinäytelmä, musiikkiopinnot, musiikkiopisto, normaaliolot, normaaliobjektiivi, normaalipaino, normaalinäköinen")
+        
+        
+        
+
+        
+
+
