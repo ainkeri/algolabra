@@ -42,3 +42,16 @@ class Trie:
                 return False
             current = current.child[char]
         return current.finish
+    
+    def dfs(self, current, prefix, words):
+        if current.finish:
+            words.append(prefix)
+        for char, c in current.child.items():
+            self.dfs(c, prefix + char, words)
+    
+    def __str__(self):
+        current = self.root
+        words = []
+        self.dfs(current, "", words)
+
+        return ', '.join(words)
