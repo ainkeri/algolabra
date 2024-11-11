@@ -1,4 +1,5 @@
 from services.trie import Trie
+from services.dameraulevenshtein import DamerauLevenshtein
 from pathlib import Path
 
 ROOT_DIR = Path(__file__).parent
@@ -12,6 +13,8 @@ class StringService:
     """
     def __init__(self):
         self.trie = Trie()
+        self.dl = DamerauLevenshtein()
+        self.close_word = ""
         
     def add_file_words_to_trie(self):
         with open(TEXT_FILE) as words_file:
@@ -23,6 +26,12 @@ class StringService:
         if self.trie.search_word(word):
             return True
         else:
+            for compare_word in self.trie.get_all_words():
+                if abs(len(word) - len(compare_word)) <= 1:
+                    comparison = self.dl.edit_distance(word, compare_word)
+                    if comparison <= 1:
+                        self.close_word = compare_word
+            
             return False
     
     def create_string(self, string):
@@ -30,6 +39,10 @@ class StringService:
         if len(string) > 0:
             self.trie.add_word(string)
         return False
+    
+    def __str__(self):
+        return f"Did u mean: '{self.close_word}'?"
+
 
 string_service = StringService()
     
