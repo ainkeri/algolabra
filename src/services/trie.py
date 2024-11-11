@@ -23,6 +23,7 @@ class Trie:
     """
     def __init__(self):
         self.root = TrieNode('')
+        self.words = []
 
     def add_word(self, word):
         current = self.root
@@ -49,9 +50,10 @@ class Trie:
         for char, c in current.child.items():
             self.dfs(c, prefix + char, words)
     
-    def __str__(self):
+    def get_all_words(self):
         current = self.root
-        words = []
-        self.dfs(current, "", words)
-
-        return ', '.join(words)
+        self.dfs(current, "", self.words)
+        return self.words
+    
+    def __str__(self):
+        return ', '.join(self.words)
