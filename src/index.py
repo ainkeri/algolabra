@@ -2,6 +2,7 @@ import customtkinter
 from ui.ui import UI
 from services.string_service import StringService
 
+
 def main():
     window = customtkinter.CTk()
     window.title("Kirjoitusvirheiden korjaaja")

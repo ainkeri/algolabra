@@ -2,6 +2,7 @@ from tkinter import ttk, constants
 import tkinter as tk
 import customtkinter
 
+
 class AddStringView:
     def __init__(self, root, handle_home, string_service):
         self._root = root
@@ -12,26 +13,30 @@ class AddStringView:
         self._input_string = ""
 
         self._initialize()
-    
+
     def pack(self):
         self._frame.pack(fill=constants.X)
-    
+
     def destroy(self):
         self._frame.destroy()
-    
+
     def _handle_create_string(self):
         string = self._create_string_entry.get()
 
         if string:
             if self._string_service.search_word_from_trie(string):
-                self._input_string = customtkinter.CTkLabel(master=self._frame, text=f"Word '{string}' is already in trie.")
+                self._input_string = customtkinter.CTkLabel(
+                    master=self._frame, text=f"Word '{string}' is already in trie.")
                 self._input_string.grid(row=3, column=0)
-                self._input_string.after(3000, lambda:  self._input_string.configure(text=""))
+                self._input_string.after(
+                    3000, lambda:  self._input_string.configure(text=""))
             else:
                 self._string_service.create_string(string)
-                self._input_string = customtkinter.CTkLabel(master=self._frame, text=f"Word '{string}' added in trie.")
+                self._input_string = customtkinter.CTkLabel(
+                    master=self._frame, text=f"Word '{string}' added in trie.")
                 self._input_string.grid(row=3, column=0)
-                self._input_string.after(3000, lambda:  self._input_string.configure(text=""))
+                self._input_string.after(
+                    3000, lambda:  self._input_string.configure(text=""))
 
         self._create_string_entry.delete(0, tk.END)
 

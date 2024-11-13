@@ -1,6 +1,7 @@
 from tkinter import constants
 import customtkinter
 
+
 class HomeView:
     def __init__(self, root, handle_add_string, handle_search_string):
         self._root = root
@@ -12,10 +13,10 @@ class HomeView:
 
     def pack(self):
         self._frame.pack(fill=constants.BOTH, expand=True)
-    
+
     def destroy(self):
         self._frame.destroy()
-    
+
     def _initialize(self):
         self._frame = customtkinter.CTkFrame(master=self._root)
         label = customtkinter.CTkLabel(master=self._frame, text="Welcome!")
@@ -37,5 +38,5 @@ class HomeView:
 
         label.grid(row=0, column=0, pady=(20, 10), sticky="n")
         add_button.grid(row=1, column=0, padx=20, pady=10, sticky="ew")
-        search_button.grid(row=2, column=0, padx=20, pady=(10, 20), sticky="ew")
-
+        search_button.grid(row=2, column=0, padx=20,
+                           pady=(10, 20), sticky="ew")
