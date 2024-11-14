@@ -2,6 +2,10 @@
 
 Kaikki testit testaavat pelkästään ohjelman sovelluslogiikkaa. Luokat, joita testaan ovat: `TrieNode`, `Trie`, `DamerauLevenshtein` ja `StringService`.
 
+## Testikattavuusraportti
+
+<img width="770" alt="Screenshot 2024-11-14 at 12 30 16" src="https://github.com/user-attachments/assets/3d3c2af6-af9b-40fc-89b4-c9483e234440">
+
 ## Yksikkötestit
 
 Yksikkötesteillä testaan sanojen lisäämistä ja hakemista, sekä sanojen vertaamista toisiinsa. `TrieNode` luokkaa testataan vain testausluokalla `TestTrieNode`, joka tarkistaa alkusolmujen lisäämisen.
@@ -97,3 +101,4 @@ Testausluokka `TestDamerauLevenshtein`:
 1. `test_right_distance_with_same_word_hypothesis`
 
    - Testaa, antaako etäisyysalgoritmi pituuden 0, kun verrataan sanaa itseensä, jossa merkkejä 1 - 100 kappaleen väliltä. Testin pitää siis palauttaa arvo 0.
+
