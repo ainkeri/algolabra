@@ -36,6 +36,8 @@ class StringService:
                 comparison = self.dl.edit_distance(word, compare_word)
                 if comparison <= 1:
                     self.close_word = compare_word
+                else:
+                    return False
         return False
 
     def create_string(self, string):
