@@ -1,4 +1,6 @@
 import unittest
+from hypothesis import given, settings
+import hypothesis.strategies as st
 from services.trie import Trie
 
 
@@ -26,6 +28,8 @@ class TestTrie(unittest.TestCase):
         self.assertTrue(self.trie.search_word("normaaliolot"))
         self.assertFalse(self.trie.search_word("nothere"))
 
-    def test_add_word(self):
-        self.trie.add_word("newword")
-        self.assertTrue(self.trie.search_word("newword"))
+    @given(arvo=st.text(min_size=1, max_size=500))
+    @settings(max_examples=500)
+    def test_adding_to_trie_hypothesis(self, arvo):
+        self.trie.add_word(arvo)
+        self.assertTrue(self.trie.search_word(arvo))
