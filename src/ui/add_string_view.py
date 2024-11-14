@@ -26,14 +26,14 @@ class AddStringView:
         if string:
             if self._string_service.search_word_from_trie(string):
                 self._input_string = customtkinter.CTkLabel(
-                    master=self._frame, text=f"Word '{string}' is already in trie.")
+                    master=self._frame, text=f"Sana '{string}' on jo lisätty.")
                 self._input_string.grid(row=3, column=0)
                 self._input_string.after(
                     3000, lambda:  self._input_string.configure(text=""))
             else:
                 self._string_service.create_string(string)
                 self._input_string = customtkinter.CTkLabel(
-                    master=self._frame, text=f"Word '{string}' added in trie.")
+                    master=self._frame, text=f"Uusi sana '{string}' lisätty!")
                 self._input_string.grid(row=3, column=0)
                 self._input_string.after(
                     3000, lambda:  self._input_string.configure(text=""))
@@ -45,7 +45,7 @@ class AddStringView:
 
         create_string_button = customtkinter.CTkButton(
             master=self._frame,
-            text="Add",
+            text="Lisää",
             command=self._handle_create_string
         )
 
@@ -67,13 +67,13 @@ class AddStringView:
 
     def _initialize(self):
         self._frame = customtkinter.CTkFrame(master=self._root)
-        label = customtkinter.CTkLabel(master=self._frame, text="Add word:")
+        label = customtkinter.CTkLabel(master=self._frame, text="Lisää sana:")
 
         self._initialize_footer()
 
         button = customtkinter.CTkButton(
             master=self._frame,
-            text="Back",
+            text="Takaisin",
             command=self._handle_home
         )
 

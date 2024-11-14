@@ -19,20 +19,20 @@ class HomeView:
 
     def _initialize(self):
         self._frame = customtkinter.CTkFrame(master=self._root)
-        label = customtkinter.CTkLabel(master=self._frame, text="Welcome!")
+        label = customtkinter.CTkLabel(master=self._frame, text="Tervetuloa!")
 
         self._frame.grid_rowconfigure(0, weight=1)
         self._frame.grid_columnconfigure(0, weight=1)
 
         add_button = customtkinter.CTkButton(
             master=self._frame,
-            text="Add a new word",
+            text="Lisää uusi sana",
             command=self._handle_add_string
         )
 
         search_button = customtkinter.CTkButton(
             master=self._frame,
-            text="Search a word",
+            text="Etsi sanaa",
             command=self._handle_search_string
         )
 

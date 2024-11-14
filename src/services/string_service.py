@@ -48,8 +48,8 @@ class StringService:
 
     def __str__(self):
         if len(self.close_word) > 0:
-            return f"Did u mean: '{self.close_word}'?"
-        return "Word not found"
+            return f"Tarkoititko: '{self.close_word}'?"
+        return "Sanaa ei löytynyt"
 
 
 string_service = StringService()
