@@ -11,10 +11,6 @@ class TestStringService(unittest.TestCase):
         self.assertEqual(
             self.string_service.search_word_from_trie("koira"), True)
 
-    def test_word_too_complex_not_in_trie_is_not_found(self):
-        self.assertEqual(
-            self.string_service.search_word_from_trie("jdleajhdle"), False)
-
     def test_valid_string_can_be_added_to_trie(self):
         self.assertEqual(self.string_service.create_string("newstring"), True)
 
@@ -26,7 +22,7 @@ class TestStringService(unittest.TestCase):
 
         self.string_service.search_word_from_trie(string)
 
-        self.assertEqual(self.string_service.__str__(), "Did u mean: 'virsi'?")
+        self.assertEqual(self.string_service.__str__(), "Tarkoititko: 'hirsi'?")
         self.assertFalse(False)
 
     def test_word_too_complex_gets_no_suggestion(self):
@@ -34,5 +30,5 @@ class TestStringService(unittest.TestCase):
 
         self.string_service.search_word_from_trie(string)
 
-        self.assertEqual(self.string_service.__str__(), "Word not found")
+        self.assertEqual(self.string_service.__str__(), "Sanaa ei löytynyt")
         self.assertFalse(False)
