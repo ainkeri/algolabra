@@ -38,7 +38,7 @@ class SearchStringView:
                     master=self._frame, text=self._closest_word)
                 self._input_word.grid(row=3, column=0)
                 self._input_word.after(
-                    3000, lambda:  self._input_word.configure(text=""))
+                    6000, lambda:  self._input_word.configure(text=""))
 
     def _initialize_footer(self):
         self._search_string = customtkinter.CTkEntry(master=self._frame)

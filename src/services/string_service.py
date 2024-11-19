@@ -16,6 +16,7 @@ class StringService:
     def __init__(self):
         self.trie = Trie()
         self.dl = DamerauLevenshtein()
+        self.sentence = []
         self.close_word = ""
 
     def add_file_words_to_trie(self):
@@ -27,9 +28,12 @@ class StringService:
     def search_word_from_trie(self, word):
         if self.trie.search_word(word):
             return True
-        return self.compare_words_with_dl(word)
+        sentence = word.split()
+        if len(sentence) == 1:
+            return self.compare_word_with_dl(word)
+        return self.compare_sentence_with_dl(sentence)
 
-    def compare_words_with_dl(self, word):
+    def compare_word_with_dl(self, word):
         self.close_word = ""
         for compare_word in self.trie.get_all_words():
             if abs(len(word) - len(compare_word)) <= 1:
@@ -37,6 +41,18 @@ class StringService:
                 if comparison <= 1:
                     self.close_word = compare_word
                     return False
+        return False
+    
+    def compare_sentence_with_dl(self, sentence):
+        self.sentence = []
+        for word in sentence:
+            if self.trie.search_word(word):
+                self.sentence.append(word)
+            else:
+                self.compare_word_with_dl(word)
+                if len(self.close_word) > 0:
+                    self.sentence.append(self.close_word)
+                    self.close_word = ""
         return False
 
     def create_string(self, string):
@@ -49,6 +65,8 @@ class StringService:
     def __str__(self):
         if len(self.close_word) > 0:
             return f"Tarkoititko: '{self.close_word}'?"
+        if len(self.sentence) > 0:
+            return f"Tarkoititko: '{' '.join(self.sentence)}'?"
         return "Sanaa ei löytynyt"
 
 
