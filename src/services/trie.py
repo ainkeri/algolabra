@@ -2,16 +2,13 @@ class TrieNode:
     """Luokka, joka edustaa yksittäistä solmua trie-tietorakenteessa.
 
     Args:
-        value (str):
-            Solmun sisältämä kirjain/merkki.
         child (dict):
             Sanakirja, joka sisältää lapsisolmut jokaiselle kirjaimelle.
         finish (bool):
             Arvo sille, onko solmun sanan päätepiste.
     """
 
-    def __init__(self, char: str):
-        self.value = char
+    def __init__(self):
         self.child = {}
         self.finish = False
 
@@ -21,11 +18,11 @@ class Trie:
 
     Args:
         root (TrieNode):
-            Trie-rakenteen juurisolmu, joka luodaan tyhjällä merkillä.
+            Trie-rakenteen juurisolmut.
     """
 
     def __init__(self):
-        self.root = TrieNode('')
+        self.root = TrieNode()
         self.words = []
 
     def add_word(self, word):
@@ -34,7 +31,7 @@ class Trie:
             if char in current.child:
                 current = current.child[char]
             else:
-                new_char = TrieNode(char)
+                new_char = TrieNode()
                 current.child[char] = new_char
                 current = new_char
         current.finish = True
