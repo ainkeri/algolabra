@@ -10,10 +10,14 @@ class StringService:
     """Luokka, joka käsittelee käyttöliittymän syötteitä, lisää ja hakee sanoja trie-tietorakenteesta sekä vertaa sanoja/lauseita Damerau-Levenshtein -etäisyyden avulla.
 
     Attributes:
-        trie (Trie): Trie-luokan ilmentymä, jota käytetään sanojen tallentamiseen ja hallintaan.
-        dl (DamerauLevenshtein): DamerauLevenshtein-luokan ilmentymä, jota käytetään sanojen vertaamiseen keskenään.
-        sentence (list): Lista lauseen sanoista, joita verrataan trie-tietorakenteeseen.
-        close_word (str): Viimeisin lähellä oleva sana, joka löytyy trie-tietorakenteesta.
+        trie (Trie):
+            Trie-luokan ilmentymä, jota käytetään sanojen tallentamiseen ja hallintaan.
+        dl (DamerauLevenshtein):
+            DamerauLevenshtein-luokan ilmentymä, jota käytetään sanojen vertaamiseen keskenään.
+        sentence (list):
+            Lista lauseen sanoista, joita verrataan trie-tietorakenteeseen.
+        close_word (str):
+            Viimeisin lähellä oleva sana, joka löytyy trie-tietorakenteesta.
     """
 
     def __init__(self):

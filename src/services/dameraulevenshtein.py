@@ -1,8 +1,22 @@
 class DamerauLevenshtein:
-    def __init__(self):
-        pass
+    """Luokka, joka vertaa kahden annetun sanan etäisyyttä toisiinsa.
+    """
 
     def edit_distance(self, word, compare_word):
+        """Vertaa kahden sanan etäisyyttä toisiinsa.
+
+        Molemmille sanoille luodaan matriisit, joiden avulla verrataan parhain mahdollinen etäisyys.
+        Etäisyys määritetän merkkien poistojen, lisäysten, korvausten ja transpositioiden
+        perusteella.
+
+        Args:
+            word (str): Ensimmäinen vertailtava sana (käyttäjän syöte).
+            compare_word (str): Toinen vertailtava sana (sana trie-tietorakenteesta).
+        
+        Returns:
+            int: Damerau-Levenshtein -etäisyys sanojen välillä.
+        """
+
         word = " " + word
         compare_word = " " + compare_word
 
