@@ -7,25 +7,28 @@ from services.trie import Trie
 class TestTrie(unittest.TestCase):
     def setUp(self):
         self.trie = Trie()
-        self.trie.add_word("metsänomistaja")
-        self.trie.add_word("normaaliolot")
-        self.trie.add_word("musiikkinäytelmä")
-        self.trie.add_word("musiikkiopinnot")
-        self.trie.add_word("normaalipaino")
-        self.trie.add_word("metsänomistus")
-        self.trie.add_word("normaaliobjektiivi")
-        self.trie.add_word("musiikkiopisto")
-        self.trie.add_word("metsänparannus")
-        self.trie.add_word("normaalinäköinen")
+        self.trie.add_word("koira")
+        self.trie.add_word("koru")
+        self.trie.add_word("kissa")
+        self.trie.add_word("kiloinen")
+        self.trie.add_word("aura")
+        self.trie.add_word("aurajuusto")
+        self.trie.add_word("auringoton")
+        self.trie.add_word("patonki")
+        self.trie.add_word("parta")
 
-    def test_str_is_returned_correctly_with_dfs(self):
-        self.trie.get_all_words()
+    def test_str_is_returned_correctly_with_pre_order_traversal(self):
+        self.maxDiff = None
+
+        self.trie.check_correct_structure()
+
+        correct_string = ", k, o, i, r, a, r, u, i, s, s, a, l, o, i, n, e, n, a, u, r, a, j, u, u, s, t, o, i, n, g, o, t, o, n, p, a, t, o, n, k, i, r, t, a"
 
         self.assertEqual(self.trie.__str__(
-        ), "metsänomistaja, metsänomistus, metsänparannus, musiikkinäytelmä, musiikkiopinnot, musiikkiopisto, normaaliolot, normaaliobjektiivi, normaalipaino, normaalinäköinen")
+        ), correct_string)
 
     def test_search_word(self):
-        self.assertTrue(self.trie.search_word("normaaliolot"))
+        self.assertTrue(self.trie.search_word("koira"))
         self.assertFalse(self.trie.search_word("nothere"))
 
     @given(arvo=st.text(min_size=1, max_size=500))

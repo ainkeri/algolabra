@@ -27,6 +27,7 @@ class Trie:
     def __init__(self):
         self.root = TrieNode('')
         self.words = []
+        self.structure = []
 
     def add_word(self, word):
         current = self.root
@@ -47,16 +48,26 @@ class Trie:
             current = current.child[char]
         return current.finish
 
-    def dfs(self, current, prefix, words):
+    def helper(self, current, prefix, words):
         if current.finish:
             words.append(prefix)
         for char, c in current.child.items():
-            self.dfs(c, prefix + char, words)
+            self.helper(c, prefix + char, words)
 
     def get_all_words(self):
         current = self.root
-        self.dfs(current, "", self.words)
+        self.helper(current, "", self.words)
         return self.words
 
+    def pre_order_traversal(self, node):
+        self.structure.append(node.value)
+
+        for _, child_node in node.child.items():
+            self.pre_order_traversal(child_node)
+
+    def check_correct_structure(self):
+        self.pre_order_traversal(self.root)
+        return self.structure
+
     def __str__(self):
-        return ', '.join(self.words)
+        return ', '.join(self.structure)
