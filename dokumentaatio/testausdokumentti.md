@@ -26,9 +26,9 @@ Testausluokka `TestStringService` (testausta varten alustettu kaikki sanat words
 
 Testausluokka `TestTrie`:
 
-1. `test_str_is_returned_correctly_with_dfs`
+1. `test_str_is_returned_correctly_with_pre_order_traversal`
 
-   - Testaa, onko sanat lisätty trie-tietorakenteeseen oikealla tavalla käyttäen leveyshakua. String-metodin pitäisi palauttaa sanat aakkosjärjestyksessä.
+   - Testaa, onko sanat lisätty trie-tietorakenteeseen oikealla tavalla käyttäen leveyshakua. String-metodin pitäisi palauttaa sanojen kirjaimet leveyshaun mukaisessa järjestyksessä (pre-order).
 
 2. `test_search_word`
 
@@ -101,4 +101,3 @@ Testausluokka `TestDamerauLevenshtein`:
 1. `test_right_distance_with_same_word_hypothesis`
 
    - Testaa, antaako etäisyysalgoritmi pituuden 0, kun verrataan sanaa itseensä, jossa merkkejä 1 - 100 kappaleen väliltä. Testin pitää siis palauttaa arvo 0.
-
