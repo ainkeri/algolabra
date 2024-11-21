@@ -30,6 +30,9 @@ class TestDamerauLevenshtein(unittest.TestCase):
     def test_two_empty_words_has_right_distance(self):
         self.assertEqual(self.dl.edit_distance("", ""), 0)
 
+    def test_transposition_gives_correct_distance(self):
+        self.assertEqual(self.dl.edit_distance("rapsi", "raspi"), 1)
+
     @given(arvo=st.text(min_size=1, max_size=500))
     @settings(max_examples=1000)
     def test_right_distance_hypothesis(self, arvo):
