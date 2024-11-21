@@ -74,7 +74,7 @@ class Trie:
 
     def helper(self, current, prefix, words):
         """Käy läpi trie-tietorakenneta ja lisää sanat listaan.
-        
+
         Metodi käy solmuja yksitellen läpi, ja lisää kirjaimia merkkijonoon. Jos solmun finish arvo on True, lisätää sana listaan.
 
         Args:

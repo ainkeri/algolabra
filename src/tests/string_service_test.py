@@ -22,7 +22,8 @@ class TestStringService(unittest.TestCase):
 
         self.string_service.search_word_from_trie(string)
 
-        self.assertEqual(self.string_service.__str__(), "Tarkoititko: 'hirsi'?")
+        self.assertEqual(self.string_service.__str__(),
+                         "Tarkoititko: 'hirsi'?")
         self.assertFalse(False)
 
     def test_word_too_complex_gets_no_suggestion(self):
@@ -30,5 +31,6 @@ class TestStringService(unittest.TestCase):
 
         self.string_service.search_word_from_trie(string)
 
-        self.assertEqual(self.string_service.__str__(), "Sanaa tai lausetta ei löytynyt")
+        self.assertEqual(self.string_service.__str__(),
+                         "Sanaa tai lausetta ei löytynyt")
         self.assertFalse(False)

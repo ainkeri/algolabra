@@ -34,7 +34,7 @@ class StringService:
 
     def add_file_words_to_trie(self):
         """Lisää words.txt -tiedoston sanat trie-tietorakenteeseen.
-        
+
         Raises:
             FileNotFoundError: Jos words.txt-tiedostoa ei löydy.
         """
@@ -73,7 +73,7 @@ class StringService:
 
         Args:
             word (str): Käyttäjän antama sana.
-        
+
         Returns:
             bool: False, jolloin käyttöliittymä voi antaa sanalle korjausehdotuksen.
         """
@@ -86,17 +86,17 @@ class StringService:
                     self.close_word = compare_word
                     return False
         return False
-    
+
     def compare_sentence_with_dl(self, sentence):
         """Vertaa annettun lauseen sanoja trie-tietorakenteeseen. 
-        
+
         Etsii jokaisen sanan trie-tietorakenteesta tai lähimmän vastineen
         Damerau-Levenshtein -etäisyyden perusteella. Korjausehdotukset
         lisätään `sentence`-listaan.
-        
+
         Args:
             sentence (list): Käyttäjän antama lause.
-        
+
         Returns:
             bool: True, jos koko lause on oikein. False, jolloin käyttöliittymä voi antaa lauseelle korjausehdotuksen.
         """
@@ -113,17 +113,17 @@ class StringService:
 
         if self.sentence == sentence:
             return True
-        
+
         return False
 
     def create_string(self, string):
         """Lisää annetun sanan trie-tietorakenteeseen.
-        
+
         Tyhjää merkkijonoa ei lisätä.
 
         Args:
             string (str): Käyttäjän syöte.
-        
+
         Returns:
             bool: True, jos sana lisättiin onnistuneesti, muuten False.
         """

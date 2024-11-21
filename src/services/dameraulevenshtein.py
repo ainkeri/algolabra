@@ -12,7 +12,7 @@ class DamerauLevenshtein:
         Args:
             word (str): Ensimmäinen vertailtava sana (käyttäjän syöte).
             compare_word (str): Toinen vertailtava sana (sana trie-tietorakenteesta).
-        
+
         Returns:
             int: Damerau-Levenshtein -etäisyys sanojen välillä.
         """
@@ -44,7 +44,7 @@ class DamerauLevenshtein:
                     word_matrix[i - 1][j - 1] + cost    # substitution
                 )
 
-                if i > 1 and j > 1 and word[i] == compare_word[j - 1] and word[i - 1] == compare_word[j]: # pylint: disable=line-too-long
+                if i > 1 and j > 1 and word[i] == compare_word[j - 1] and word[i - 1] == compare_word[j]:  # pylint: disable=line-too-long
                     word_matrix[i][j] = min(
                         # transposition
                         word_matrix[i][j], word_matrix[i - 2][j - 2] + 1)
