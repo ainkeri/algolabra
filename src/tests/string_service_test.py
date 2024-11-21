@@ -30,5 +30,5 @@ class TestStringService(unittest.TestCase):
 
         self.string_service.search_word_from_trie(string)
 
-        self.assertEqual(self.string_service.__str__(), "Sanaa ei löytynyt")
+        self.assertEqual(self.string_service.__str__(), "Sanaa tai lausetta ei löytynyt")
         self.assertFalse(False)
