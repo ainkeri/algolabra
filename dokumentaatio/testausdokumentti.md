@@ -48,7 +48,15 @@ Testausluokka `TestStringService`:
 
    - Testaa, antaako ohjelma väärinkirjoitetulle sanalle korjausehdotuksen. Tässä tapauksessa ensimmäinen sana, jonka etäisyys annettuun sanaan on 1: (sirsi - hirsi).
 
-2. `test_word_too_complex_gets_no_suggestion`
+2. `test_sentence_gets_a_suggestion`
+
+   - Testaa, antaako ohjelma lauseelle korjausehdotuksen, kun se sisältää väärinkirjoitettuja sanoja.
+
+3. `test_correct_sentence_is_found`
+
+   - Testaa, palauttaako ohjelma True kun ohjelma saa lauseen, joka on kirjoitettu oikein.
+
+4. `test_word_too_complex_gets_no_suggestion`
 
    - Testaa, tulostaako ohjelma "Sanaa ei löytynyt" käyttäjän etsiessä liian kompleksista sanaa (ohjelma ei siis anna korjausehdotusta).
 
@@ -77,6 +85,10 @@ Testausluokka `TestDamerauLevenshtein`:
 6. `test_two_empty_words_has_right_distance`
 
    - Testaa, antaako arvon 0 kun verrataan kahta tyhjää merkkijonoa.
+
+7. `test_transposition_gives_correct_distance`
+
+   - Testaa, toimiiko transpositio, eli esim. rapsi - raspi lyhin etäisyys on 1.
 
 ## Invarianttitestit
 
