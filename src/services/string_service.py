@@ -107,10 +107,9 @@ class StringService:
                 self.sentence.append(word)
             else:
                 self.compare_word_with_dl(word)
-                if len(self.close_word) > 0:
-                    self.sentence.append(self.close_word)
-                    self.close_word = ""
-
+                self.sentence.append(self.close_word)
+                self.close_word = ""
+                
         if self.sentence == sentence:
             return True
 
