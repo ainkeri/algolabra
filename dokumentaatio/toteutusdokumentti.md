@@ -12,9 +12,9 @@ Trie on puumainen tietorakenne, joka sisältää merkkijonoja. Se toimii tehokka
 
 Algoritmi, joka mittaa kahden sanan samankaltaisuutta. Se ottaa huomioon määrän, kuinka monta kertaa lisätään, poistetaan, korvataan ja transponoidaan merkkijonoa, jotta siitä saataisiin haluttu merkkijono.
 
-Esimerkki: pihi => pihvi
+Esimerkki: pivi => pihvi
 
-Algoritmin avulla voidaan laskea, että ylemmän muutoksen etäisyys on 1, sillä pihi => pihvi vaatii vain yhden merkin lisäyksen. Ohjelmassa otetaan huomioon vain korjaukset, jotka vaativat maksimissaan etäisyyden 1.
+Algoritmin avulla voidaan laskea, että ylemmän muutoksen etäisyys on 1, sillä pivi => pihvi vaatii vain yhden merkin lisäyksen. Ohjelmassa on ideana löytää sana, jonka etäisyys syötteeseen on mahdollisimman pieni.
 
 ## Laajat kielimallit
 
