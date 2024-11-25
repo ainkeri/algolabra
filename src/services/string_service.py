@@ -69,7 +69,8 @@ class StringService:
         """Vertaa annetua sanaa trie-tietorakenteen sanoihin Damerau Levenshtein -etäisyyden avulla.
 
         Etsii trie-tietorakenteesta lähimmän sanan, jonka etäisyys on
-        korkeintaan 1, ja tallentaa sen muuttujaan `close_word`.
+        pienin (pienin etäisyys tallennettu minimum_distance -muuttujaan),
+        ja tallentaa sanan muuttujaan `close_word`.
 
         Args:
             word (str): Käyttäjän antama sana.
