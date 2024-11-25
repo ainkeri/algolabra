@@ -79,12 +79,13 @@ class StringService:
         """
 
         self.close_word = ""
+        minimum_distance = float('inf')
         for compare_word in self.trie.get_all_words():
             if abs(len(word) - len(compare_word)) <= 1:
                 comparison = self.dl.edit_distance(word, compare_word)
-                if comparison <= 1:
+                if comparison < minimum_distance:
+                    minimum_distance = comparison
                     self.close_word = compare_word
-                    return False
         return False
 
     def compare_sentence_with_dl(self, sentence):
