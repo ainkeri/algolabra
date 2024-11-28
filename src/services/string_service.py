@@ -150,7 +150,6 @@ class StringService:
             return f"Tarkoititko: '{self.close_word}'?"
         if len(self.sentence) > 0:
             return f"Tarkoititko: '{' '.join(self.sentence)}'?"
-        return "Sanaa tai lausetta ei löytynyt"
 
 
 string_service = StringService()
