@@ -7,7 +7,8 @@ TEXT_FILE = ROOT_DIR / "words.txt"
 
 
 class StringService:
-    """Luokka, joka käsittelee käyttöliittymän syötteitä, lisää ja hakee sanoja trie-tietorakenteesta sekä vertaa sanoja/lauseita Damerau-Levenshtein -etäisyyden avulla.
+    """Luokka, joka käsittelee käyttöliittymän syötteitä, lisää ja hakee sanoja
+       trie-tietorakenteesta sekä vertaa sanoja/lauseita Damerau-Levenshtein -etäisyyden avulla.
 
     Attributes:
         trie (Trie):
@@ -100,7 +101,8 @@ class StringService:
             sentence (list): Käyttäjän antama lause.
 
         Returns:
-            bool: True, jos koko lause on oikein. False, jolloin käyttöliittymä voi antaa lauseelle korjausehdotuksen.
+            bool: True, jos koko lause on oikein. False, jolloin käyttöliittymä voi antaa
+            lauseelle korjausehdotuksen.
         """
 
         self.sentence = []
@@ -111,7 +113,7 @@ class StringService:
                 self.compare_word_with_dl(word)
                 self.sentence.append(self.close_word)
                 self.close_word = ""
-                
+
         if self.sentence == sentence:
             return True
 

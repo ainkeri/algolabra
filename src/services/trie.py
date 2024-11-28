@@ -75,7 +75,8 @@ class Trie:
     def helper(self, current, prefix, words):
         """Käy läpi trie-tietorakenneta ja lisää sanat listaan.
 
-        Metodi käy solmuja yksitellen läpi, ja lisää kirjaimia merkkijonoon. Jos solmun finish arvo on True, lisätää sana listaan.
+        Metodi käy solmuja yksitellen läpi, ja lisää kirjaimia merkkijonoon.
+        Jos solmun finish arvo on True, lisätää sana listaan.
 
         Args:
             current: Läpikäytävä solmu, alustavasti juurisolmu.
@@ -100,7 +101,8 @@ class Trie:
         return self.words
 
     def pre_order_traversal(self, node):
-        """Käy läpi trie-tietorakennetaa ja lisää sanat listaan syvyyshaun esijärjestyksessä (pre-order).
+        """Käy läpi trie-tietorakennetaa ja lisää sanat listaan
+           syvyyshaun esijärjestyksessä (pre-order).
 
         Args:
             node: Läpikäytävä solmu.
@@ -112,7 +114,8 @@ class Trie:
             self.pre_order_traversal(child_node)
 
     def check_correct_structure(self):
-        """Kutsuu metodia pre_order_traversal juurisolmulla ja palauttaa syvyyshaun tuottaman listan.
+        """Kutsuu metodia pre_order_traversal juurisolmulla
+           ja palauttaa syvyyshaun tuottaman listan.
 
         Returns:
             self.structure: Lista merkkijonojen kirjaimista syvyyshaun mukaisessa järjestyksessä.
@@ -122,7 +125,8 @@ class Trie:
         return self.structure
 
     def __str__(self):
-        """Muodostaa merkkijonomuotoisen esityksen merkkijonoista syvyyshaun mukaisessa järjestyksessä.
+        """Muodostaa merkkijonomuotoisen esityksen merkkijonoista
+           syvyyshaun mukaisessa järjestyksessä.
 
         Returns:
             str: Merkkijonojen merkit.
