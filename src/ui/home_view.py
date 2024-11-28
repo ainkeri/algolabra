@@ -36,7 +36,7 @@ class HomeView:
             command=self._handle_search_string
         )
 
-        label.grid(row=0, column=0, pady=(20, 10), sticky="n")
+        label.grid(row=0, column=0, pady=(20, 10), sticky="ew")
         add_button.grid(row=1, column=0, padx=20, pady=10, sticky="ew")
         search_button.grid(row=2, column=0, padx=20,
                            pady=(10, 20), sticky="ew")

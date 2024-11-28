@@ -28,7 +28,7 @@ class SearchStringView:
 
             if self._string_service.search_word_from_trie(string):
                 self._input_word = customtkinter.CTkLabel(
-                    master=self._frame, text="Sana löytyi!")
+                    master=self._frame, text="Sana/lause löytyi!")
                 self._input_word.grid(row=3, column=0)
                 self._input_word.after(
                     3000, lambda:  self._input_word.configure(text=""))
@@ -65,12 +65,13 @@ class SearchStringView:
             sticky=constants.EW
         )
 
+        self._frame.columnconfigure(0, weight=1)
+        self._frame.columnconfigure(1, weight=0)
+
     def _initialize(self):
         self._frame = customtkinter.CTkFrame(master=self._root)
         label = customtkinter.CTkLabel(
-            master=self._frame, text="Etsi sanaa")
-
-        self._initialize_footer()
+            master=self._frame, text="Etsi sanaa:")
 
         button = customtkinter.CTkButton(
             master=self._frame,
@@ -78,5 +79,7 @@ class SearchStringView:
             command=self._handle_home
         )
 
-        label.grid(row=1, column=0)
-        button.grid(row=0, column=0)
+        label.grid(row=1, column=0, padx=10, pady=10)
+        button.grid(row=0, column=0, padx=5, pady=5, sticky=constants.W)
+
+        self._initialize_footer()
