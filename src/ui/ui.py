@@ -31,9 +31,7 @@ class UI:
         self._hide_current_view()
 
         self._current_view = HomeView(
-            self._root,
-            self._handle_add_string,
-            self._handle_search_string
+            self._root, self._handle_add_string, self._handle_search_string
         )
 
         self._current_view.pack()
@@ -42,9 +40,7 @@ class UI:
         self._hide_current_view()
 
         self._current_view = AddStringView(
-            self._root,
-            self._handle_home,
-            self._string_service
+            self._root, self._handle_home, self._string_service
         )
 
         self._current_view.pack()
@@ -53,9 +49,7 @@ class UI:
         self._hide_current_view()
 
         self._current_view = SearchStringView(
-            self._root,
-            self._handle_home,
-            self._string_service
+            self._root, self._handle_home, self._string_service
         )
 
         self._current_view.pack()

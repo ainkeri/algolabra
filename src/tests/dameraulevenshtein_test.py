@@ -8,8 +8,7 @@ class TestDamerauLevenshtein(unittest.TestCase):
     def setUp(self):
         self.dl = DamerauLevenshtein()
         self.word = "lapoi"
-        self.words = ["uusi", "sana", "miu",
-                      "oikeudenmukaisuus", "kuningas", "rosvo"]
+        self.words = ["uusi", "sana", "miu", "oikeudenmukaisuus", "kuningas", "rosvo"]
 
     def test_words_compared_have_distance_one(self):
         self.assertEqual(self.dl.edit_distance(self.word, "lapsi"), 1)
@@ -21,8 +20,7 @@ class TestDamerauLevenshtein(unittest.TestCase):
         self.assertEqual(self.dl.edit_distance(self.word, "varsi"), 3)
 
     def test_words_compared_have_greater_edit_distance(self):
-        self.assertEqual(self.dl.edit_distance(
-            "oikeudenmukaisuus", "virsi"), 15)
+        self.assertEqual(self.dl.edit_distance("oikeudenmukaisuus", "virsi"), 15)
 
     def test_compared_word_is_empty_string(self):
         self.assertEqual(self.dl.edit_distance(self.word, ""), 5)
@@ -43,7 +41,9 @@ class TestDamerauLevenshtein(unittest.TestCase):
             word = self.dl.edit_distance(arvo, i)
             self.assertGreaterEqual(word, 0)
 
-    @given(arvo=st.text(min_size=1, max_size=500), arvo2=st.text(min_size=1, max_size=500))
+    @given(
+        arvo=st.text(min_size=1, max_size=500), arvo2=st.text(min_size=1, max_size=500)
+    )
     @example("oikeudenmukaisuus", "virsi")
     def test_right_distance_between_two_hypothesis(self, arvo, arvo2):
         distance_one = self.dl.edit_distance(arvo, arvo2)

@@ -22,9 +22,9 @@ class StringService:
     """
 
     def __init__(self):
-        """Luokan konstruktori. 
+        """Luokan konstruktori.
 
-        Alustaa trie- ja Damerau-Levenshtein -tietorakenteet sekä tyhjät muuttujat 
+        Alustaa trie- ja Damerau-Levenshtein -tietorakenteet sekä tyhjät muuttujat
         lauseen sanojen ja lähimmän sanan tallentamiselle.
         """
 
@@ -81,7 +81,7 @@ class StringService:
         """
 
         self.close_word = ""
-        minimum_distance = float('inf')
+        minimum_distance = float("inf")
         for compare_word in self.trie.get_all_words():
             if abs(len(word) - len(compare_word)) <= 1:
                 comparison = self.dl.edit_distance(word, compare_word)
@@ -91,7 +91,7 @@ class StringService:
         return False
 
     def compare_sentence_with_dl(self, sentence):
-        """Vertaa annettun lauseen sanoja trie-tietorakenteeseen. 
+        """Vertaa annettun lauseen sanoja trie-tietorakenteeseen.
 
         Etsii jokaisen sanan trie-tietorakenteesta tai lähimmän vastineen
         Damerau-Levenshtein -etäisyyden perusteella. Korjausehdotukset

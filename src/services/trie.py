@@ -34,7 +34,7 @@ class Trie:
         Alustaa TrieNoden, sekä tyhjät muuttujat
         """
 
-        self.root = TrieNode('')
+        self.root = TrieNode("")
         self.words = []
         self.structure = []
 
@@ -132,4 +132,4 @@ class Trie:
             str: Merkkijonojen merkit.
         """
 
-        return ', '.join(self.structure)
+        return ", ".join(self.structure)

@@ -20,8 +20,7 @@ class TestTrie(unittest.TestCase):
     def test_str_is_returned_correctly_with_pre_order_traversal(self):
         self.trie.check_correct_structure()
         correct_string = ", k, o, i, r, a, r, u, i, s, s, a, l, o, i, n, e, n, a, u, r, a, j, u, u, s, t, o, i, n, g, o, t, o, n, p, a, t, o, n, k, i, r, t, a"
-        self.assertEqual(self.trie.__str__(
-        ), correct_string)
+        self.assertEqual(self.trie.__str__(), correct_string)
 
     def test_search_word(self):
         self.assertTrue(self.trie.search_word("koira"))
