@@ -78,15 +78,19 @@ Testausluokka `TestDamerauLevenshtein`:
 
    - Testaa, antaako ohjelma suuremman etäisyyden (15).
 
-5. `test_one_empty_word_has_right_distance`
+5. `test_compared_word_is_empty_string`
 
-   - Testaa, antaako ohjelma toisen sanan pituuden, kun verrattava sana on tyhjä merkkijono.
+   - Testaa, antaako ohjelma käyttäjän antaman sanan pituuden, kun verrattava sana on tyhjä merkkijono.
 
-6. `test_two_empty_words_has_right_distance`
+6. `test_user_input_is_empty_string`
+
+   - Testaa, antaako ohjelma verrattavan sanan pituuden, kun käyttäjän annettu sana on tyhjä merkkijono.
+
+7. `test_two_empty_words_has_right_distance`
 
    - Testaa, antaako arvon 0 kun verrataan kahta tyhjää merkkijonoa.
 
-7. `test_transposition_gives_correct_distance`
+8. `test_transposition_gives_correct_distance`
 
    - Testaa, toimiiko transpositio, eli esim. rapsi - raspi lyhin etäisyys on 1.
 
