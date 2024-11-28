@@ -1,5 +1,7 @@
 # Kirjoitusvirheiden korjaaja
 
+![GitHub Actions](https://github.com/ainkeri/algolabra/workflows/CI/badge.svg)
+
 Algoritmit ja Tekoäly Harjoitustyö 2024.
 
 ## Dokumentaatio
