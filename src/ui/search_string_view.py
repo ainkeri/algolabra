@@ -10,7 +10,7 @@ class SearchStringView:
         self._frame = None
         self._search_string = None
         self._closest_word = None
-        self._input_word = ""
+        self._input_word = None
 
         self._initialize()
 
@@ -23,6 +23,9 @@ class SearchStringView:
     def _handle_search_string(self):
         string = self._search_string.get()
 
+        if self._input_word is not None:
+            self._input_word.destroy()
+
         if string:
             self._string_service.search_word_from_trie(string)
 
@@ -30,19 +33,13 @@ class SearchStringView:
                 self._input_word = customtkinter.CTkLabel(
                     master=self._frame, text="Sana/lause löytyi!"
                 )
-                self._input_word.grid(row=3, column=0)
-                self._input_word.after(
-                    3000, lambda: self._input_word.configure(text="")
-                )
             else:
                 self._closest_word = self._string_service.__str__()
                 self._input_word = customtkinter.CTkLabel(
                     master=self._frame, text=self._closest_word
                 )
-                self._input_word.grid(row=3, column=0)
-                self._input_word.after(
-                    6000, lambda: self._input_word.configure(text="")
-                )
+            self._input_word.grid(row=3, column=0)
+            self._input_word.after(6000, lambda: self._input_word.configure(text=""))
 
     def _initialize_footer(self):
         self._search_string = customtkinter.CTkEntry(master=self._frame)
