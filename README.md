@@ -1,6 +1,6 @@
 # Kirjoitusvirheiden korjaaja
 
-![GitHub Actions](https://github.com/ainkeri/algolabra/workflows/CI/badge.svg)
+![GitHub Actions](https://github.com/ainkeri/algolabra/workflows/CI/badge.svg) [![codecov](https://codecov.io/github/ainkeri/algolabra/graph/badge.svg?token=EQjUSNZC1v)](https://codecov.io/github/ainkeri/algolabra)
 
 Algoritmit ja Tekoäly Harjoitustyö 2024.
 
