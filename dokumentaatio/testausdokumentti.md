@@ -60,6 +60,10 @@ Testausluokka `TestStringService`:
 
    - Testaa, tulostaako ohjelma "Sanaa ei löytynyt" käyttäjän etsiessä liian kompleksista sanaa (ohjelma ei siis anna korjausehdotusta).
 
+5. `test_word_or_sentence_not_found`
+
+   - Testaa, palauttaako ohjelma "Sanaa tai lausetta ei löytynyt" tapauksessa, jossa merkkijonoa tai lausetta ei olla määritelty.
+
 Testausluokka `TestDamerauLevenshtein`:
 
 1. `test_words_compared_have_distance_one`
@@ -110,10 +114,10 @@ Testausluokka `TestDamerauLevenshtein`:
 
    - Testaa, antaako etäisyysalgoritmi pituuden 0 tai suurempi, kun verrataan maksimissaan 1000 kappaletta 1 - 500 merkin pituisia sanoja listaan sanoja.
 
-1. `test_right_distance_between_two_hypothesis`
+2. `test_right_distance_between_two_hypothesis`
 
    - Testaa, antaako etäisyysalgoritmi saman etäisyyden, kun verrataan kahta sanaa, joissa on molemmissa väliltä 1 - 500 merkkiä. Testissä annetaan arvot kahdesti, eli ensin verrataan arvoa 1 arvoon 2 ja sitten arvoa 2 arvoon 1.
 
-1. `test_right_distance_with_same_word_hypothesis`
+3. `test_right_distance_with_same_word_hypothesis`
 
    - Testaa, antaako etäisyysalgoritmi pituuden 0, kun verrataan sanaa itseensä, jossa merkkejä 1 - 100 kappaleen väliltä. Testin pitää siis palauttaa arvo 0.
