@@ -1,6 +1,4 @@
 import unittest
-from hypothesis import given, settings, example
-import hypothesis.strategies as st
 from services.string_service import StringService
 
 
@@ -23,8 +21,7 @@ class TestStringService(unittest.TestCase):
 
         self.string_service.search_word_from_trie(string)
 
-        self.assertEqual(self.string_service.__str__(), "Tarkoititko: 'hirsi'?")
-        self.assertFalse(False)
+        self.assertEqual(str(self.string_service), "Tarkoititko: 'hirsi'?")
 
     def test_sentence_gets_a_suggestion(self):
         sentence = "koira ruu kisra lapio"
@@ -32,21 +29,20 @@ class TestStringService(unittest.TestCase):
         self.string_service.search_word_from_trie(sentence)
 
         self.assertEqual(
-            self.string_service.__str__(), "Tarkoititko: 'koira juu kisa lapio'?"
+            str(self.string_service), "Tarkoititko: 'koira juu kisa lapio'?"
         )
-        self.assertFalse(False)
 
     def test_correct_sentence_is_found(self):
         sentence = "koira lapsi kissa lapio hiekka"
 
         self.string_service.search_word_from_trie(sentence)
 
-        self.assertTrue(True)
-
     def test_word_too_complex_gets_suggestion(self):
         string = "slkdjskldjksjd"
 
         self.string_service.search_word_from_trie(string)
 
-        self.assertEqual(self.string_service.__str__(), "Tarkoititko: 'oikaisulukija'?")
-        self.assertTrue(True)
+        self.assertEqual(str(self.string_service), "Tarkoititko: 'oikaisulukija'?")
+
+    def test_word_or_sentence_not_found(self):
+        self.assertEqual(str(self.string_service), "Sanaa tai lausetta ei löytynyt")
