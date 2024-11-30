@@ -1,4 +1,4 @@
-from tkinter import ttk, constants
+from tkinter import constants
 import tkinter as tk
 import customtkinter
 
@@ -28,19 +28,14 @@ class AddStringView:
                 self._input_string = customtkinter.CTkLabel(
                     master=self._frame, text=f"Sana '{string}' on jo lisätty."
                 )
-                self._input_string.grid(row=3, column=0)
-                self._input_string.after(
-                    3000, lambda: self._input_string.configure(text="")
-                )
             else:
                 self._string_service.create_string(string)
                 self._input_string = customtkinter.CTkLabel(
                     master=self._frame, text=f"Uusi sana '{string}' lisätty!"
                 )
-                self._input_string.grid(row=3, column=0)
-                self._input_string.after(
-                    3000, lambda: self._input_string.configure(text="")
-                )
+
+        self._input_string.grid(row=3, column=0)
+        self._input_string.after(3000, lambda: self._input_string.configure(text=""))
 
         self._create_string_entry.delete(0, tk.END)
 

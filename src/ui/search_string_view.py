@@ -1,4 +1,4 @@
-from tkinter import ttk, constants
+from tkinter import constants
 import customtkinter
 
 
@@ -34,7 +34,7 @@ class SearchStringView:
                     master=self._frame, text="Sana/lause löytyi!"
                 )
             else:
-                self._closest_word = self._string_service.__str__()
+                self._closest_word = str(self._string_service)
                 self._input_word = customtkinter.CTkLabel(
                     master=self._frame, text=self._closest_word
                 )
