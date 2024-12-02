@@ -30,8 +30,6 @@ class StringService:
 
         self.trie = Trie()
         self.dl = DamerauLevenshtein()
-        self.sentence = []
-        self.close_word = ""
 
     def add_file_words_to_trie(self):
         """Lisää words.txt -tiedoston sanat trie-tietorakenteeseen.
@@ -45,79 +43,46 @@ class StringService:
                 word = word.strip()
                 self.trie.add_word(word)
 
-    def search_word_from_trie(self, word):
-        """Hakee käyttäjän antamaa sanaa trie-tietorakenteesta.
-
-        Jos syöte on yksittäinen sana, tarkistaa sanan olemassaolon
-        tai etsii lähimmän vastaavuuden. Jos syöte on lause, vertailee
-        sanoja erikseen.
-
-        Args:
-            word: Käyttäjän antama syöte.
-
-        Returns:
-            bool: True, jos yksittäinen sana löytyy, muuten False.
-        """
-
+    def word_exists_in_trie(self, word):
         if self.trie.search_word(word):
             return True
-        sentence = word.split()
-        if len(sentence) == 1:
-            return self.compare_word_with_dl(word)
-        return self.compare_sentence_with_dl(sentence)
+        return False
 
-    def compare_word_with_dl(self, word):
+    def returns_closest_list(self, phrase):
+        phrase = phrase.split()
+        corrected_phrase = []
+
+        for word in phrase:
+            if self.trie.search_word(word):
+                corrected_phrase.append(word)
+            else:
+                corrected_phrase.append(self.compare_words(word))
+
+        return corrected_phrase
+
+    def compare_words(self, word):
         """Vertaa annetua sanaa trie-tietorakenteen sanoihin Damerau Levenshtein -etäisyyden avulla.
 
         Etsii trie-tietorakenteesta lähimmän sanan, jonka etäisyys on
         pienin (pienin etäisyys tallennettu minimum_distance -muuttujaan),
-        ja tallentaa sanan muuttujaan `close_word`.
+        ja tallentaa sanan muuttujaan `closest_word`.
 
         Args:
             word (str): Käyttäjän antama sana.
 
         Returns:
-            bool: False, jolloin käyttöliittymä voi antaa sanalle korjausehdotuksen.
+            string: sanan, jolla on lyhin etäisyys annettuun sanaan.
         """
 
-        self.close_word = ""
+        closest_word = ""
         minimum_distance = float("inf")
         for compare_word in self.trie.get_all_words():
             if abs(len(word) - len(compare_word)) <= 1:
                 comparison = self.dl.edit_distance(word, compare_word)
                 if comparison < minimum_distance:
                     minimum_distance = comparison
-                    self.close_word = compare_word
-        return False
-
-    def compare_sentence_with_dl(self, sentence):
-        """Vertaa annettun lauseen sanoja trie-tietorakenteeseen.
-
-        Etsii jokaisen sanan trie-tietorakenteesta tai lähimmän vastineen
-        Damerau-Levenshtein -etäisyyden perusteella. Korjausehdotukset
-        lisätään `sentence`-listaan.
-
-        Args:
-            sentence (list): Käyttäjän antama lause.
-
-        Returns:
-            bool: True, jos koko lause on oikein. False, jolloin käyttöliittymä voi antaa
-            lauseelle korjausehdotuksen.
-        """
-
-        self.sentence = []
-        for word in sentence:
-            if self.trie.search_word(word):
-                self.sentence.append(word)
-            else:
-                self.compare_word_with_dl(word)
-                self.sentence.append(self.close_word)
-                self.close_word = ""
-
-        if self.sentence == sentence:
-            return True
-
-        return False
+                    closest_word = compare_word
+        return closest_word
 
     def create_string(self, string):
         """Lisää annetun sanan trie-tietorakenteeseen.
@@ -136,21 +101,6 @@ class StringService:
             self.trie.add_word(string)
             return True
         return False
-
-    def __str__(self):
-        """Muodostaa merkkijonomuotoisen esityksen riippuen sanan tai lauseen korjauksista.
-
-        Jos sana tai lause löytyi trie-tietorakenteesta, palauttaa sitä
-        vastaavan korjausehdotuksen. Muuten ilmoittaa, että syötettä ei löytynyt.
-
-        Returns:
-            str: Korjausehdotus tai löytyikö sana/lause vai ei.
-        """
-        if len(self.close_word) > 0:
-            return f"Tarkoititko: '{self.close_word}'?"
-        if len(self.sentence) > 0:
-            return f"Tarkoititko: '{' '.join(self.sentence)}'?"
-        return "Sanaa tai lausetta ei löytynyt"
 
 
 string_service = StringService()
