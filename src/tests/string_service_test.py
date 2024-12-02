@@ -8,7 +8,10 @@ class TestStringService(unittest.TestCase):
         self.string_service.add_file_words_to_trie()
 
     def test_word_in_trie_is_found(self):
-        self.assertEqual(self.string_service.search_word_from_trie("koira"), True)
+        self.assertEqual(self.string_service.word_exists_in_trie("koira"), True)
+
+    def test_word_not_in_trie_is_not_found(self):
+        self.assertEqual(self.string_service.word_exists_in_trie("nakkikiska"), False)
 
     def test_valid_string_can_be_added_to_trie(self):
         self.assertEqual(self.string_service.create_string("newstring"), True)
@@ -16,33 +19,22 @@ class TestStringService(unittest.TestCase):
     def test_not_valid_string_can_not_be_added_to_trie(self):
         self.assertEqual(self.string_service.create_string(""), False)
 
-    def test_word_not_in_trie_gets_suggestion(self):
+    def test_word_is_corrected(self):
         string = "sirsi"
 
-        self.string_service.search_word_from_trie(string)
+        self.assertEqual(self.string_service.returns_closest_list(string), ["hirsi"])
 
-        self.assertEqual(str(self.string_service), "Tarkoititko: 'hirsi'?")
-
-    def test_sentence_gets_a_suggestion(self):
+    def test_sentence_is_corrected(self):
         sentence = "koira ruu kisra lapio"
 
-        self.string_service.search_word_from_trie(sentence)
-
         self.assertEqual(
-            str(self.string_service), "Tarkoititko: 'koira juu kisa lapio'?"
+            self.string_service.returns_closest_list(sentence),
+            ["koira", "juu", "kisa", "lapio"],
         )
 
-    def test_correct_sentence_is_found(self):
-        sentence = "koira lapsi kissa lapio hiekka"
-
-        self.string_service.search_word_from_trie(sentence)
-
-    def test_word_too_complex_gets_suggestion(self):
+    def test_word_too_complex_is_corrected(self):
         string = "slkdjskldjksjd"
 
-        self.string_service.search_word_from_trie(string)
-
-        self.assertEqual(str(self.string_service), "Tarkoititko: 'oikaisulukija'?")
-
-    def test_word_or_sentence_not_found(self):
-        self.assertEqual(str(self.string_service), "Sanaa tai lausetta ei löytynyt")
+        self.assertEqual(
+            self.string_service.returns_closest_list(string), ["oikaisulukija"]
+        )
