@@ -89,7 +89,7 @@ class StringService:
 
         closest_word = ""
         minimum_distance = float("inf")
-        for compare_word in self.trie.get_all_words():
+        for compare_word in self.trie:
             if abs(len(word) - len(compare_word)) <= 1:
                 comparison = self.dl.edit_distance(word, compare_word)
                 if comparison < minimum_distance:
