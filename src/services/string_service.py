@@ -15,17 +15,12 @@ class StringService:
             Trie-luokan ilmentymä, jota käytetään sanojen tallentamiseen ja hallintaan.
         dl (DamerauLevenshtein):
             DamerauLevenshtein-luokan ilmentymä, jota käytetään sanojen vertaamiseen keskenään.
-        sentence (list):
-            Lista lauseen sanoista, joita verrataan trie-tietorakenteeseen.
-        close_word (str):
-            Viimeisin lähellä oleva sana, joka löytyy trie-tietorakenteesta.
     """
 
     def __init__(self):
         """Luokan konstruktori.
 
-        Alustaa trie- ja Damerau-Levenshtein -tietorakenteet sekä tyhjät muuttujat
-        lauseen sanojen ja lähimmän sanan tallentamiselle.
+        Alustaa trie- ja Damerau-Levenshtein -tietorakenteet.
         """
 
         self.trie = Trie()
@@ -44,11 +39,29 @@ class StringService:
                 self.trie.add_word(word)
 
     def word_exists_in_trie(self, word):
+        """Tarkistaa, esiintyykö sana trie-tietorakenteessa.
+
+        Args:
+            word (str): Käyttäjän lisäämä sana.
+
+        Returns:
+            bool: True, jos sana löytyy triestä, muuten False.
+        """
+
         if self.trie.search_word(word):
             return True
         return False
 
     def returns_closest_list(self, phrase):
+        """Palauttaa korjatun sanan/lauseen.
+
+        Args:
+            phrase (str): Käyttäjän kirjoittama sana/lause.
+
+        Returns:
+            list: Listamuotoinen korjaus sanasta/lauseesta.
+        """
+
         phrase = phrase.split()
         corrected_phrase = []
 
