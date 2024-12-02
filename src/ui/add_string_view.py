@@ -10,7 +10,7 @@ class AddStringView:
         self._string_service = string_service
         self._frame = None
         self._create_string_entry = None
-        self._input_string = ""
+        self._input_string = None
 
         self._initialize()
 
@@ -23,8 +23,11 @@ class AddStringView:
     def _handle_create_string(self):
         string = self._create_string_entry.get()
 
+        if self._input_string is not None:
+            self._input_string.destroy()
+
         if string:
-            if self._string_service.search_word_from_trie(string):
+            if self._string_service.word_exists_in_trie(string):
                 self._input_string = customtkinter.CTkLabel(
                     master=self._frame, text=f"Sana '{string}' on jo lisätty."
                 )

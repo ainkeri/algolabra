@@ -27,16 +27,15 @@ class SearchStringView:
             self._input_word.destroy()
 
         if string:
-            self._string_service.search_word_from_trie(string)
-
-            if self._string_service.search_word_from_trie(string):
+            if self._string_service.word_exists_in_trie(string):
                 self._input_word = customtkinter.CTkLabel(
                     master=self._frame, text="Sana/lause löytyi!"
                 )
             else:
-                self._closest_word = str(self._string_service)
+                self._closest_word = self._string_service.returns_closest_list(string)
                 self._input_word = customtkinter.CTkLabel(
-                    master=self._frame, text=self._closest_word
+                    master=self._frame,
+                    text=f"Tarkoititko: '{" ".join(self._closest_word)}'?",
                 )
             self._input_word.grid(row=3, column=0)
             self._input_word.after(6000, lambda: self._input_word.configure(text=""))
