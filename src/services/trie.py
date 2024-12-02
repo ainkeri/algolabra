@@ -72,35 +72,16 @@ class Trie:
             current = current.child[char]
         return current.finish
 
-    def helper(self, current, prefix, words):
-        """Käy läpi trie-tietorakenneta ja lisää sanat listaan.
+    def __iter__(self):
+        return self._traverse(self.root, "")
 
-        Metodi käy solmuja yksitellen läpi, ja lisää kirjaimia merkkijonoon.
-        Jos solmun finish arvo on True, lisätää sana listaan.
+    def _traverse(self, node, prefix):
+        if node.finish:
+            yield prefix
+        for char, child_node in node.child.items():
+            yield from self._traverse(child_node, prefix + char)
 
-        Args:
-            current: Läpikäytävä solmu, alustavasti juurisolmu.
-            prefix: Merkkijono, joka lisätään listaan.
-            words: Lista, mihin sanat lisätään.
-        """
-
-        if current.finish:
-            words.append(prefix)
-        for char, c in current.child.items():
-            self.helper(c, prefix + char, words)
-
-    def get_all_words(self):
-        """Kutsuu helper -metodia parametreillä juurisolmu, tyhjä merkkijono ja sanalista.
-
-        Returns:
-            self.words: Sanalista.
-        """
-
-        current = self.root
-        self.helper(current, "", self.words)
-        return self.words
-
-    def pre_order_traversal(self, node):
+    def _pre_order_traversal(self, node):
         """Käy läpi trie-tietorakennetaa ja lisää sanat listaan
            syvyyshaun esijärjestyksessä (pre-order).
 
@@ -111,17 +92,17 @@ class Trie:
         self.structure.append(node.value)
 
         for _, child_node in node.child.items():
-            self.pre_order_traversal(child_node)
+            self._pre_order_traversal(child_node)
 
     def check_correct_structure(self):
-        """Kutsuu metodia pre_order_traversal juurisolmulla
+        """Kutsuu metodia _pre_order_traversal juurisolmulla
            ja palauttaa syvyyshaun tuottaman listan.
 
         Returns:
             self.structure: Lista merkkijonojen kirjaimista syvyyshaun mukaisessa järjestyksessä.
         """
 
-        self.pre_order_traversal(self.root)
+        self._pre_order_traversal(self.root)
         return self.structure
 
     def __str__(self):
