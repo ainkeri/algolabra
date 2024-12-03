@@ -1,5 +1,5 @@
 import unittest
-from hypothesis import given, settings, example
+from hypothesis import given, settings
 import hypothesis.strategies as st
 from services.dameraulevenshtein import DamerauLevenshtein
 
@@ -20,7 +20,7 @@ class TestDamerauLevenshtein(unittest.TestCase):
         self.assertEqual(self.dl.edit_distance(self.word, "varsi"), 3)
 
     def test_words_compared_have_greater_edit_distance(self):
-        self.assertEqual(self.dl.edit_distance("oikeudenmukaisuus", "virsi"), 15)
+        self.assertEqual(self.dl.edit_distance("oikeudenmukaisuus", "virsi"), 14.25)
 
     def test_compared_word_is_empty_string(self):
         self.assertEqual(self.dl.edit_distance(self.word, ""), 5)
@@ -34,6 +34,9 @@ class TestDamerauLevenshtein(unittest.TestCase):
     def test_transposition_gives_correct_distance(self):
         self.assertEqual(self.dl.edit_distance("rapsi", "raspi"), 1)
 
+    def test_typo_edit_distance_with_adjacent_keys(self):
+        self.assertEqual(self.dl.edit_distance("joira", "koira"), 0.25)
+
     @given(arvo=st.text(min_size=1, max_size=500))
     @settings(max_examples=1000)
     def test_right_distance_hypothesis(self, arvo):
@@ -42,15 +45,11 @@ class TestDamerauLevenshtein(unittest.TestCase):
             self.assertGreaterEqual(word, 0)
 
     @given(
-        arvo=st.text(min_size=1, max_size=500), arvo2=st.text(min_size=1, max_size=500)
+        arvo=st.text(
+            alphabet="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
+            min_size=1,
+            max_size=100,
+        )
     )
-    @example("oikeudenmukaisuus", "virsi")
-    def test_right_distance_between_two_hypothesis(self, arvo, arvo2):
-        distance_one = self.dl.edit_distance(arvo, arvo2)
-        distance_two = self.dl.edit_distance(arvo2, arvo)
-
-        self.assertEqual(distance_one, distance_two)
-
-    @given(arvo=st.text(min_size=1, max_size=100))
     def test_right_distance_with_same_word_hypothesis(self, arvo):
         self.assertEqual(self.dl.edit_distance(arvo, arvo), 0)

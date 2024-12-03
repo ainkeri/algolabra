@@ -22,19 +22,19 @@ class TestStringService(unittest.TestCase):
     def test_word_is_corrected(self):
         string = "sirsi"
 
-        self.assertEqual(self.string_service.returns_closest_list(string), ["hirsi"])
+        self.assertEqual(self.string_service.returns_closest_list(string), ["sitsi"])
 
     def test_sentence_is_corrected(self):
         sentence = "koira ruu kisra lapio"
 
         self.assertEqual(
             self.string_service.returns_closest_list(sentence),
-            ["koira", "juu", "kisa", "lapio"],
+            ["koira", "tiu", "kusta", "lapio"],
         )
 
     def test_word_too_complex_is_corrected(self):
         string = "slkdjskldjksjd"
 
         self.assertEqual(
-            self.string_service.returns_closest_list(string), ["oikaisulukija"]
+            self.string_service.returns_closest_list(string), ["salamanleimaus"]
         )
