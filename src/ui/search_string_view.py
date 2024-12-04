@@ -32,11 +32,19 @@ class SearchStringView:
                     master=self._frame, text="Sana/lause löytyi!"
                 )
             else:
-                self._closest_word = self._string_service.returns_closest_list(string)
-                self._input_word = customtkinter.CTkLabel(
-                    master=self._frame,
-                    text=f"Tarkoititko: '{" ".join(self._closest_word)}'?",
+                self._closest_word = " ".join(
+                    self._string_service.returns_closest_list(string)
                 )
+                if len(self._closest_word) <= 1:
+                    self._input_word = customtkinter.CTkLabel(
+                        master=self._frame,
+                        text="Sanaa/lausetta ei löytynyt",
+                    )
+                else:
+                    self._input_word = customtkinter.CTkLabel(
+                        master=self._frame,
+                        text=f"Tarkoititko: '{self._closest_word}'?",
+                    )
             self._input_word.grid(row=3, column=0)
             self._input_word.after(6000, lambda: self._input_word.configure(text=""))
 
@@ -56,7 +64,9 @@ class SearchStringView:
 
     def _initialize(self):
         self._frame = customtkinter.CTkFrame(master=self._root)
-        label = customtkinter.CTkLabel(master=self._frame, text="Etsi sanaa:")
+        label = customtkinter.CTkLabel(
+            master=self._frame, text="Etsi sanaa tai lausetta:"
+        )
 
         button = customtkinter.CTkButton(
             master=self._frame, text="Takaisin", command=self._handle_home
