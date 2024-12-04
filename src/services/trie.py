@@ -73,9 +73,27 @@ class Trie:
         return current.finish
 
     def __iter__(self):
+        """Iteroi trie-tietorakenteen sanojen yli.
+
+        Returns:
+            Iteraattori, joka palauttaa jokaisen sana, joka on tallennettu trie-tietorakenteeseen.
+        """
+
         return self._traverse(self.root, "")
 
     def _traverse(self, node, prefix):
+        """Läpikäy rekursiivisesti trie-tietorakennetta, ja generoi kaikki sanat,
+           jotka on tallennettu sen sisälle.
+
+        Args:
+            node: Solmu, josta läpikäynti alkaa.
+            prefix (str): Sanaa vastaava merkkijonon alku, jota täydennetään
+                          läpikäynnin aikana.
+
+        Yields:
+            str: Seuraava sana trie-tietorakenteessa.
+        """
+
         if node.finish:
             yield prefix
         for char, child_node in node.child.items():
