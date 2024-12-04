@@ -25,16 +25,14 @@ class TestStringService(unittest.TestCase):
         self.assertEqual(self.string_service.returns_closest_list(string), ["sitsi"])
 
     def test_sentence_is_corrected(self):
-        sentence = "koira ruu kisra lapio"
+        sentence = "koira ruu mirsa lapio"
 
         self.assertEqual(
             self.string_service.returns_closest_list(sentence),
-            ["koira", "tiu", "kusta", "lapio"],
+            ["koira", "tiu", "murea", "lapio"],
         )
 
-    def test_word_too_complex_is_corrected(self):
-        string = "slkdjskldjksjd"
+    def test_word_too_complex_is_not_corrected(self):
+        string = "adkklqdjjlkedjflkesjdkledsafghjkfrd"
 
-        self.assertEqual(
-            self.string_service.returns_closest_list(string), ["salamanleimaus"]
-        )
+        self.assertEqual(self.string_service.returns_closest_list(string), [""])

@@ -28,7 +28,7 @@ class TestDamerauLevenshtein(unittest.TestCase):
     def test_user_input_is_empty_string(self):
         self.assertEqual(self.dl.edit_distance("", self.word), 5)
 
-    def test_two_empty_words_has_right_distance(self):
+    def test_two_empty_words_have_correct_distance(self):
         self.assertEqual(self.dl.edit_distance("", ""), 0)
 
     def test_transposition_gives_correct_distance(self):
