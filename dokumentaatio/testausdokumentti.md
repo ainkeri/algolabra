@@ -12,7 +12,8 @@ Yksikkötesteillä testaan sanojen lisäämistä ja hakemista, sekä sanojen ver
 
 ### Sanojen lisääminen
 
-Testausluokka `TestStringService` (testausta varten alustettu kaikki sanat words.txt -tiedostosta trie-tietorakenteeseen):
+<b>Testausluokka `TestStringService`:</b>
+<i>Testausta varten alustettu kaikki sanat words.txt -tiedostosta trie-tietorakenteeseen.</i>
 
 1. `test_valid_string_can_be_added_to_trie`
 
@@ -24,7 +25,7 @@ Testausluokka `TestStringService` (testausta varten alustettu kaikki sanat words
 
 ### Sanojen hakeminen
 
-Testausluokka `TestTrie`:
+<b>Testausluokka `TestTrie`:</b>
 
 1. `test_str_is_returned_correctly_with_pre_order_traversal`
 
@@ -32,39 +33,35 @@ Testausluokka `TestTrie`:
 
 2. `test_search_word`
 
-   - Testaa, palauttaako ohjelma oikean boolean -arvon, kun haetaan sanoja. Esim. sana "normaaliolot" palauttaa True, mutta "nothere" palauttaa False.
+   - Testaa, palauttaako ohjelma oikean boolean -arvon, kun haetaan sanoja. Esim. sana "koira" palauttaa True, mutta "nothere" palauttaa False.
 
-Testausluokka `TestStringService`:
+<b>Testausluokka `TestStringService`:</b>
 
 1. `test_word_in_trie_is_found`
 
    - Testaa, löytyykö annettu sana tietorakenteesta. Sana "koira" palauttaa True.
 
+2. `test_word_not_in_trie_is_not_found`
+
+   - Testaa, antaako ohjelma arvon False, kun etsitty sana ei ole tietorakenteessa.
+
 ### Sanojen vertaaminen
 
-Testausluokka `TestStringService`:
+<b>Testausluokka `TestStringService`:</b>
 
-1. `test_word_not_in_trie_gets_suggestion`
+1. `test_word_is_corrected`
 
-   - Testaa, antaako ohjelma väärinkirjoitetulle sanalle korjausehdotuksen. Tässä tapauksessa ensimmäinen sana, jonka etäisyys annettuun sanaan on 1: (sirsi - hirsi).
+   - Testaa, antaako ohjelma väärinkirjoitetulle sanalle korjausehdotuksen.
 
-2. `test_sentence_gets_a_suggestion`
+2. `test_sentence_is_corrected`
 
    - Testaa, antaako ohjelma lauseelle korjausehdotuksen, kun se sisältää väärinkirjoitettuja sanoja.
 
-3. `test_correct_sentence_is_found`
+3. `test_word_too_complex_is_not_corrected`
 
-   - Testaa, palauttaako ohjelma True kun ohjelma saa lauseen, joka on kirjoitettu oikein.
+   - Testaa, palauttaako ohjelma tyhjän listan kun ohjelma saa sanan, joka on liian monimutkainen.
 
-4. `test_word_too_complex_gets_no_suggestion`
-
-   - Testaa, tulostaako ohjelma "Sanaa ei löytynyt" käyttäjän etsiessä liian kompleksista sanaa (ohjelma ei siis anna korjausehdotusta).
-
-5. `test_word_or_sentence_not_found`
-
-   - Testaa, palauttaako ohjelma "Sanaa tai lausetta ei löytynyt" tapauksessa, jossa merkkijonoa tai lausetta ei olla määritelty.
-
-Testausluokka `TestDamerauLevenshtein`:
+<b>Testausluokka `TestDamerauLevenshtein`:</b>
 
 1. `test_words_compared_have_distance_one`
 
@@ -90,7 +87,7 @@ Testausluokka `TestDamerauLevenshtein`:
 
    - Testaa, antaako ohjelma verrattavan sanan pituuden, kun käyttäjän annettu sana on tyhjä merkkijono.
 
-7. `test_two_empty_words_has_right_distance`
+7. `test_two_empty_words_have_correct_distance`
 
    - Testaa, antaako arvon 0 kun verrataan kahta tyhjää merkkijonoa.
 
@@ -98,26 +95,26 @@ Testausluokka `TestDamerauLevenshtein`:
 
    - Testaa, toimiiko transpositio, eli esim. rapsi - raspi lyhin etäisyys on 1.
 
+9. `test_typo_edit_distance_with_adjacent_keys`
+
+   - Testaa, kuinka hyvin ohjelma tunnistaa kirjoitusvirheen, joka johtuu naapurinäppäimen painamisesta. Esim. joira - koira, missä j on k kirjaimen vieressä näppäimistöllä.
+
 ## Invarianttitestit
 
 Invarianttitesteillä testataan suuremmilla sanamäärillä sanojen lisäämistä, hakemista ja vertaamista keskenään.
 
-Testausluokka `TestTrie`:
+<b>Testausluokka `TestTrie`:</b>
 
 1. `test_adding_to_trie_hypothesis(arvo)`
 
    - Testaa, onnistuuko uuden sanan lisääminen. Annetaan maksimissaan 500 eri sanaa, joiden pituus on 1 - 500 merkin välillä. Testataan, onnistuuko sanojen lisääminen trie-tietorakenteeseen (eli löytyykö sanat lisäyksen jälkeen).
 
-Testausluokka `TestDamerauLevenshtein`:
+<b>Testausluokka `TestDamerauLevenshtein`:</b>
 
 1. `test_right_distance_hypothesis`
 
    - Testaa, antaako etäisyysalgoritmi pituuden 0 tai suurempi, kun verrataan maksimissaan 1000 kappaletta 1 - 500 merkin pituisia sanoja listaan sanoja.
 
-2. `test_right_distance_between_two_hypothesis`
-
-   - Testaa, antaako etäisyysalgoritmi saman etäisyyden, kun verrataan kahta sanaa, joissa on molemmissa väliltä 1 - 500 merkkiä. Testissä annetaan arvot kahdesti, eli ensin verrataan arvoa 1 arvoon 2 ja sitten arvoa 2 arvoon 1.
-
-3. `test_right_distance_with_same_word_hypothesis`
+2. `test_right_distance_with_same_word_hypothesis`
 
    - Testaa, antaako etäisyysalgoritmi pituuden 0, kun verrataan sanaa itseensä, jossa merkkejä 1 - 100 kappaleen väliltä. Testin pitää siis palauttaa arvo 0.
