@@ -22,8 +22,6 @@ class Trie:
     Args:
         root (TrieNode):
             Trie-rakenteen juurisolmu, joka luodaan tyhjällä merkillä.
-        words (list):
-            Lista trie:n sanoista, joihin voidaan verrata käyttäjän syötettä.
         structure (list):
             Testausta varten luotu lista trie:n rakenteesta.
     """
@@ -35,7 +33,6 @@ class Trie:
         """
 
         self.root = TrieNode("")
-        self.words = []
         self.structure = []
 
     def add_word(self, word):
