@@ -46,7 +46,7 @@ Käynnistäessä ohjelma avautuu ponnahdusikkunaan, jossa on napit `Etsi sanaa t
 
 ### Sanojen hakeminen
 
-Käyttäjä voi hakea sanoja tai lauseita ohjelmasta. Jos sana/lause löytyy, ohjelma ilmoittaa: `Sana/lause löytyi!`. Jos sanaa tai lausetta ei löydy, antaa ohjelma korjausehdotuksen: `Tarkoititko "<korjattu sana>"?`. Lauseen tapauksessa ohjelma antaa korjausehdotuksen: `Tarkoititko "<korjattu lause>"?`. Ohjelma korjaa lauseesta vain ne sanat, jotka on kirjoitettu väärin.
+Käyttäjä voi hakea sanoja tai lauseita ohjelmasta. Jos sana/lause löytyy, ohjelma ilmoittaa: `Sana/lause löytyi!`. Jos sanaa ei löydy, antaa ohjelma korjausehdotuksen: `Tarkoititko "<korjattu sana>"?`. Lauseen tapauksessa ohjelma antaa korjausehdotuksen: `Tarkoititko "<korjattu lause>"?`.
 
 #### Virhetilanteet
 

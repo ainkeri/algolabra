@@ -1,7 +1,7 @@
 class TrieNode:
     """Luokka, joka edustaa yksittäistä solmua trie-tietorakenteessa.
 
-    Args:
+    Attributes:
         value (str):
             Solmun sisältämä kirjain/merkki.
         child (dict):
@@ -19,7 +19,7 @@ class TrieNode:
 class Trie:
     """Luokka, joka hallinnoi sanojen lisäämistä ja hakua trie-tietorakenteessa.
 
-    Args:
+    Attributes:
         root (TrieNode):
             Trie-rakenteen juurisolmu, joka luodaan tyhjällä merkillä.
         structure (list):
