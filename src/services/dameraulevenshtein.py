@@ -6,8 +6,8 @@ class DamerauLevenshtein:
 
         Molemmille sanoille luodaan matriisit, joiden avulla verrataan parhain mahdollinen etäisyys.
         Etäisyys määritetään merkkien poistojen, lisäysten, korvausten ja transpositioiden
-        perusteella. Merkkien korvaamisessa huomioidaan tarkemmin kirjaimet, jotka ovat näppäimistöllä
-        lähimpänä läpikäytävää merkkiä.
+        perusteella. Merkkien korvaamisessa huomioidaan tarkemmin kirjaimet, jotka ovat
+        näppäimistöllä lähimpänä läpikäytävää merkkiä.
 
         Args:
             word (str): Ensimmäinen vertailtava sana (käyttäjän syöte).
@@ -105,7 +105,7 @@ class DamerauLevenshtein:
                     and j > 1
                     and word[i] == compare_word[j - 1]
                     and word[i - 1] == compare_word[j]
-                ):  # pylint: disable=line-too-long
+                ):
                     word_matrix[i][j] = min(
                         # transposition
                         word_matrix[i][j],
