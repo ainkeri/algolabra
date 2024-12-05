@@ -20,7 +20,7 @@ Esimerkki: pivi &rarr; pihvi
 
 Algoritmin avulla voidaan laskea, että ylemmän muutoksen etäisyys on 1, sillä pivi &rarr; pihvi vaatii vain yhden merkin lisäyksen. Ohjelmassa on ideana löytää sana, jonka etäisyys syötteeseen on mahdollisimman pieni.
 
-Etäisyysalgoritmiin on lisätty toiminnallisuus, joka huomioi kirjainten sijainnin näppäimistöllä ja niiden lähimmät naapurkirjaimet. Koska kirjoitusvirheet johtuvat usein väärän napin painalluksesta, ohjelma antaa tälläiselle kirjaimen korvaamiselle etäisyyden 1/4.
+Etäisyysalgoritmiin on lisätty toiminnallisuus, joka huomioi kirjainten sijainnin näppäimistöllä ja niiden lähimmät naapurikirjaimet. Koska kirjoitusvirheet johtuvat usein väärän napin painalluksesta, ohjelma antaa tälläiselle kirjaimen korvaamiselle painon 1/4.
 
 Esimerkki: pliivi &rarr; oliivi
 

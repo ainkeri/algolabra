@@ -113,8 +113,12 @@ Invarianttitesteillä testataan suuremmilla sanamäärillä sanojen lisäämist�
 
 1. `test_right_distance_hypothesis`
 
-   - Testaa, antaako etäisyysalgoritmi pituuden 0 tai suurempi, kun verrataan maksimissaan 1000 kappaletta 1 - 500 merkin pituisia sanoja listaan sanoja.
+   - Testaa, antaako etäisyysalgoritmi etäisyyden 0 tai suurempi, kun verrataan maksimissaan 1000 kappaletta 1 - 500 merkin pituisia sanoja listaan sanoja.
 
 2. `test_right_distance_with_same_word_hypothesis`
 
-   - Testaa, antaako etäisyysalgoritmi pituuden 0, kun verrataan sanaa itseensä, jossa merkkejä 1 - 100 kappaleen väliltä. Testin pitää siis palauttaa arvo 0.
+   - Testaa, antaako etäisyysalgoritmi etäisyyden 0, kun verrataan sanaa itseensä, jossa merkkejä 1 - 100 merkin väliltä. Testin pitää siis palauttaa arvo 0.
+
+3. `test_distance_to_empty_word_is_correct_hypothesis`
+
+   - Testaa, antaako etäisyysalgoritmi toisen sanan pituuden etäisyydeksi, kun verrataan sanaa tyhjään merkkijonoon. Testimerkkijonoja on 1000, jossa merkkejä 1 - 500 merkin väliltä.
