@@ -37,19 +37,31 @@ class TestDamerauLevenshtein(unittest.TestCase):
     def test_typo_edit_distance_with_adjacent_keys(self):
         self.assertEqual(self.dl.edit_distance("joira", "koira"), 0.25)
 
-    @given(arvo=st.text(min_size=1, max_size=500))
+    @given(value=st.text(min_size=1, max_size=500))
     @settings(max_examples=1000)
-    def test_right_distance_hypothesis(self, arvo):
+    def test_right_distance_hypothesis(self, value):
         for i in self.words:
-            word = self.dl.edit_distance(arvo, i)
+            word = self.dl.edit_distance(value, i)
             self.assertGreaterEqual(word, 0)
 
     @given(
-        arvo=st.text(
+        value=st.text(
             alphabet="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
             min_size=1,
             max_size=100,
         )
     )
-    def test_right_distance_with_same_word_hypothesis(self, arvo):
-        self.assertEqual(self.dl.edit_distance(arvo, arvo), 0)
+    def test_right_distance_with_same_word_hypothesis(self, value):
+        self.assertEqual(self.dl.edit_distance(value, value), 0)
+
+    @given(
+        value=st.text(
+            alphabet="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
+            min_size=1,
+            max_size=500,
+        )
+    )
+    @settings(max_examples=1000)
+    def test_distance_to_empty_word_is_correct_hypothesis(self, value):
+        string = ""
+        self.assertEqual(self.dl.edit_distance(string, value), len(value))
