@@ -29,13 +29,19 @@ class SearchStringView:
         if string:
             if self._string_service.word_exists_in_trie(string):
                 self._input_word = customtkinter.CTkLabel(
-                    master=self._frame, text="Sana/lause löytyi!"
+                    master=self._frame, text="Sana löytyi!"
                 )
             else:
                 self._closest_word = " ".join(
                     self._string_service.returns_closest_list(string)
                 )
-                if len(self._closest_word) <= 1:
+                if self._closest_word == string:
+                    self._input_word = customtkinter.CTkLabel(
+                        master=self._frame,
+                        text="Lause löytyi!",
+                    )
+
+                elif len(self._closest_word) <= 1:
                     self._input_word = customtkinter.CTkLabel(
                         master=self._frame,
                         text="Sanaa/lausetta ei löytynyt",
