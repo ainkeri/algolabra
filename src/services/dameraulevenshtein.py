@@ -47,25 +47,6 @@ class DamerauLevenshtein:
             "å": ["p", "ö", "ä"],
             "ä": ["ö", "å"],
             "ö": ["l", "p", "å", "ä"],
-            "á": ["a"],
-            "à": ["a"],
-            "â": ["a"],
-            "é": ["e"],
-            "è": ["e"],
-            "ê": ["e"],
-            "û": ["u"],
-            "ô": ["o"],
-            "õ": ["o"],
-            "î": ["i"],
-            "š": ["s"],
-            "ž": ["z"],
-            "ñ": ["n"],
-            "2": ["1", "q", "w", "3"],
-            "3": ["2", "w", "e", "4"],
-            "-": [".", "ö", "ä"],
-            "‑": [".", "ö", "ä"],
-            "’": ["ä", "¨"],
-            " ": [" "],
         }
 
         word = " " + word
@@ -95,7 +76,9 @@ class DamerauLevenshtein:
                 )
 
                 if i == j:
-                    if word[i] in closest_keyboard_letters[compare_word[j].lower()]:
+                    if word[i] in closest_keyboard_letters.get(
+                        compare_word[j].lower(), "Unknown"
+                    ):
                         word_matrix[i][j] = (
                             word_matrix[i - 1][j - 1] + 0.25
                         )  # substitution with adjacent letter in keyboard
