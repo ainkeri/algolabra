@@ -27,32 +27,43 @@ class SearchStringView:
             self._input_word.destroy()
 
         if string:
-            if self._string_service.word_exists_in_trie(string):
-                self._input_word = customtkinter.CTkLabel(
-                    master=self._frame, text="Sana löytyi!"
-                )
-            else:
-                self._closest_word = " ".join(
-                    self._string_service.returns_closest_list(string)
-                )
-                if self._closest_word == string:
+            try:
+                if self._string_service.word_exists_in_trie(string):
                     self._input_word = customtkinter.CTkLabel(
-                        master=self._frame,
-                        text="Lause löytyi!",
-                    )
-
-                elif len(self._closest_word) <= 1:
-                    self._input_word = customtkinter.CTkLabel(
-                        master=self._frame,
-                        text="Sanaa/lausetta ei löytynyt",
+                        master=self._frame, text="Sana löytyi!"
                     )
                 else:
-                    self._input_word = customtkinter.CTkLabel(
-                        master=self._frame,
-                        text=f"Tarkoititko: '{self._closest_word}'?",
+                    self._closest_word = " ".join(
+                        self._string_service.returns_closest_list(string)
                     )
-            self._input_word.grid(row=3, column=0)
-            self._input_word.after(6000, lambda: self._input_word.configure(text=""))
+                    if self._closest_word == string:
+                        self._input_word = customtkinter.CTkLabel(
+                            master=self._frame,
+                            text="Lause löytyi!",
+                        )
+
+                    elif len(self._closest_word) <= 1:
+                        self._input_word = customtkinter.CTkLabel(
+                            master=self._frame,
+                            text="Sanaa/lausetta ei löytynyt",
+                        )
+                    else:
+                        self._input_word = customtkinter.CTkLabel(
+                            master=self._frame,
+                            text=f"Tarkoititko: '{self._closest_word}'?",
+                        )
+                self._input_word.grid(row=3, column=0)
+                self._input_word.after(
+                    6000, lambda: self._input_word.configure(text="")
+                )
+            except TimeoutError as e:
+                self._input_word = customtkinter.CTkLabel(
+                    master=self._frame, text=f"Virhe {str(e)}"
+                )
+                self._input_word.grid(row=3, column=0)
+                self._input_word.after(
+                    6000, lambda: self._input_word.configure(text="")
+                )
 
     def _initialize_footer(self):
         self._search_string = customtkinter.CTkEntry(master=self._frame)

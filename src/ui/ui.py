@@ -10,7 +10,7 @@ class UI:
         self._string_service = string_service
 
     def start(self):
-        self._show_home_view()
+        self._show_view(HomeView)
 
     def _hide_current_view(self):
         if self._current_view:
@@ -18,38 +18,27 @@ class UI:
 
         self._current_view = None
 
+    def _show_view(self, view_class):
+        self._hide_current_view()
+        if view_class == HomeView:
+            self._current_view = view_class(
+                self._root, self._handle_add_string, self._handle_search_string
+            )
+        if view_class == AddStringView:
+            self._current_view = view_class(
+                self._root, self._handle_home, self._string_service
+            )
+        if view_class == SearchStringView:
+            self._current_view = view_class(
+                self._root, self._handle_home, self._string_service
+            )
+        self._current_view.pack()
+
     def _handle_home(self):
-        self._show_home_view()
+        self._show_view(HomeView)
 
     def _handle_add_string(self):
-        self._show_add_string_view()
+        self._show_view(AddStringView)
 
     def _handle_search_string(self):
-        self._show_search_string_view()
-
-    def _show_home_view(self):
-        self._hide_current_view()
-
-        self._current_view = HomeView(
-            self._root, self._handle_add_string, self._handle_search_string
-        )
-
-        self._current_view.pack()
-
-    def _show_add_string_view(self):
-        self._hide_current_view()
-
-        self._current_view = AddStringView(
-            self._root, self._handle_home, self._string_service
-        )
-
-        self._current_view.pack()
-
-    def _show_search_string_view(self):
-        self._hide_current_view()
-
-        self._current_view = SearchStringView(
-            self._root, self._handle_home, self._string_service
-        )
-
-        self._current_view.pack()
+        self._show_view(SearchStringView)
