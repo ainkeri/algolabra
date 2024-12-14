@@ -4,7 +4,7 @@ Kaikki testit testaavat pelkästään ohjelman sovelluslogiikkaa. Luokat, joita 
 
 ## Testikattavuusraportti
 
-<img width="752" alt="Screenshot 2024-12-05 at 11 13 14" src="https://github.com/user-attachments/assets/fd564248-01d7-451f-b905-2c985a064fe9">
+<img width="765" alt="Screenshot 2024-12-14 at 12 07 27" src="https://github.com/user-attachments/assets/f8fe9d33-7569-4168-8a60-07e5ae55c673" />
 
 ## Yksikkötestit
 
