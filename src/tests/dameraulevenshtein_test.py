@@ -37,6 +37,22 @@ class TestDamerauLevenshtein(unittest.TestCase):
     def test_typo_edit_distance_with_adjacent_keys(self):
         self.assertEqual(self.dl.edit_distance("joira", "koira"), 0.25)
 
+    def test_long_strings(self):
+        long_string1 = "a" * 1000
+        long_string2 = "a" * 999 + "b"
+        self.assertEqual(self.dl.edit_distance(long_string1, long_string2), 1)
+
+    def test_special_characters(self):
+        self.assertEqual(self.dl.edit_distance("hello!", "hello?"), 1)
+
+    def test_case_sensitivity(self):
+        self.assertEqual(self.dl.edit_distance("Hello", "hello"), 1)
+
+    @given(st.text(), st.text())
+    @settings(max_examples=100)
+    def test_random_strings(self, s1, s2):
+        self.assertGreaterEqual(self.dl.edit_distance(s1, s2), 0)
+
     @given(value=st.text(min_size=1, max_size=500))
     @settings(max_examples=1000)
     def test_right_distance_hypothesis(self, value):

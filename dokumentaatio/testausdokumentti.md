@@ -99,6 +99,18 @@ Yksikkötesteillä testaan sanojen lisäämistä ja hakemista, sekä sanojen ver
 
    - Testaa, kuinka hyvin ohjelma tunnistaa kirjoitusvirheen, joka johtuu naapurinäppäimen painamisesta. Esim. joira - koira, missä j on k kirjaimen vieressä näppäimistöllä.
 
+10. `test_long_strings`
+
+- Testaa, onko kahden pitkän sanan etäisyys 1, kun vika merkki "b" korvataan merkillä "a".
+
+11. `test_special_characters`
+
+- Testaa, osaako algoritmi laskea etäisyyden 1, kun korvattava merkki on erikoismerkki.
+
+12. `test_case_sensitivity`
+
+- Testaa, antaako algoritmi etäisyyden 1, kun korvattava merkki on isokirjain.
+
 ## Invarianttitestit
 
 Invarianttitesteillä testataan suuremmilla sanamäärillä sanojen lisäämistä, hakemista ja vertaamista keskenään.
@@ -111,14 +123,18 @@ Invarianttitesteillä testataan suuremmilla sanamäärillä sanojen lisäämist�
 
 <b>Testausluokka `TestDamerauLevenshtein`:</b>
 
-1. `test_right_distance_hypothesis`
+1. `test_random_strings`
+
+   - Testaa, antaako ohjelma etäisyydeksi 0 tai suurempi, kun verrataan maksimissaan 100 kappaletta merkkijonoja keskenään.
+
+2. `test_right_distance_hypothesis`
 
    - Testaa, antaako etäisyysalgoritmi etäisyyden 0 tai suurempi, kun verrataan maksimissaan 1000 kappaletta 1 - 500 merkin pituisia sanoja listaan sanoja.
 
-2. `test_right_distance_with_same_word_hypothesis`
+3. `test_right_distance_with_same_word_hypothesis`
 
    - Testaa, antaako etäisyysalgoritmi etäisyyden 0, kun verrataan sanaa itseensä, jossa merkkejä 1 - 100 merkin väliltä. Testin pitää siis palauttaa arvo 0.
 
-3. `test_distance_to_empty_word_is_correct_hypothesis`
+4. `test_distance_to_empty_word_is_correct_hypothesis`
 
    - Testaa, antaako etäisyysalgoritmi toisen sanan pituuden etäisyydeksi, kun verrataan sanaa tyhjään merkkijonoon. Testimerkkijonoja on 1000, jossa merkkejä 1 - 500 merkin väliltä.
