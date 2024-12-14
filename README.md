@@ -19,4 +19,4 @@ Algoritmit ja Tekoäly Harjoitustyö 2024.
 - [Viikko 4](https://github.com/ainkeri/algolabra/tree/main/dokumentaatio/viikkoraportit/viikkoraportti4.md)
 - [Viikko 5](https://github.com/ainkeri/algolabra/tree/main/dokumentaatio/viikkoraportit/viikkoraportti5.md)
 - [Viikko 6](https://github.com/ainkeri/algolabra/tree/main/dokumentaatio/viikkoraportit/viikkoraportti6.md)
-
+- [Viikko 7](https://github.com/ainkeri/algolabra/tree/main/dokumentaatio/viikkoraportit/viikkoraportti7.md)
